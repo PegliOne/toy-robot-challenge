@@ -1,0 +1,15 @@
+move
+left
+right
+report
+place 0, 0, NORTH
+move
+report
+right
+move
+report
+left
+move
+report
+place 3, 3, WEST
+report
