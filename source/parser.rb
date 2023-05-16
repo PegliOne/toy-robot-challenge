@@ -1,4 +1,4 @@
-require './robot.rb'
+require_relative 'robot.rb'
 
  module Parser
   def parse_and_run_commands(command_data, robot)

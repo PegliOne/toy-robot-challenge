@@ -1,6 +1,6 @@
 # Input file
 
-INPUT_FILE_LOCATION = '../test_commands.txt'
+INPUT_FILE_NAME = 'example_commands.txt'
 
 # Board dimensions
 

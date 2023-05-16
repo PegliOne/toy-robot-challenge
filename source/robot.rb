@@ -1,14 +1,17 @@
-require './validations_helper.rb'
+require_relative 'helpers/validations_helper.rb'
 
 class Robot
   include ValidationsHelper
+  attr_reader :x_position, :y_position, :facing_direction
 
-  def initialize(x_position: nil, y_position: nil, facing_direction: nil)
-    place(x_position, y_position, facing_direction)
+  def initialize()
+    @x_position = nil
+    @y_position = nil
+    @facing_direction = nil
   end
 
   def place(x_position, y_position, facing_direction)
-    return unless place_data_valid?(x_position, y_position, facing_direction)
+    return unless is_place_data_valid?(x_position, y_position, facing_direction)
     @x_position = x_position
     @y_position = y_position
     @facing_direction = facing_direction
