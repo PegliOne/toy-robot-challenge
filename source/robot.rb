@@ -8,28 +8,28 @@ class Robot
   end
 
   def place(x_position, y_position, facing_direction)
-    return if place_data_invalid?(x_position, y_position, facing_direction)
+    return unless place_data_valid?(x_position, y_position, facing_direction)
     @x_position = x_position
     @y_position = y_position
     @facing_direction = facing_direction
   end
 
   def move
-    return if is_unplaced?(@x_position, @y_position, @facing_direction)
+    return unless is_placed?(@x_position, @y_position, @facing_direction)
     case @facing_direction
     when 'NORTH'
-      do_move(value: @y_position + 1, dimension: 'y')
+      move_on_y_axis(@y_position + 1)
     when 'EAST'
-      do_move(value: @x_position + 1, dimension: 'x') 
+      move_on_x_axis(@x_position + 1) 
     when 'SOUTH'
-      do_move(value: @y_position - 1, dimension: 'y')
+      move_on_y_axis(@y_position - 1)
     when 'WEST'
-      do_move(value: @x_position - 1, dimension: 'x')
+      move_on_x_axis(@x_position - 1)
     end      
   end
 
   def left
-    return if is_unplaced?(@x_position, @y_position, @facing_direction)
+    return unless is_placed?(@x_position, @y_position, @facing_direction)
     case @facing_direction
     when 'NORTH'
       @facing_direction = 'WEST'
@@ -43,7 +43,7 @@ class Robot
   end
 
   def right
-    return if is_unplaced?(@x_position, @y_position, @facing_direction)
+    return unless is_placed?(@x_position, @y_position, @facing_direction)
     case @facing_direction
     when 'NORTH'
       @facing_direction = 'EAST'
@@ -57,14 +57,19 @@ class Robot
   end
   
   def report
-    return if is_unplaced?(@x_position, @y_position, @facing_direction)
+    return unless is_placed?(@x_position, @y_position, @facing_direction)
     puts "#{@x_position},#{@y_position},#{@facing_direction}"
   end
 
   private
 
-  def do_move(value:, dimension:)
-    return if is_position_invalid?(value, dimension)
-    dimension == 'x' ? @x_position = value : @y_position = value
+  def move_on_x_axis(value)
+    return unless is_x_position_valid?(value)
+    @x_position = value
+  end
+
+  def move_on_y_axis(value)
+    return unless is_y_position_valid?(value)
+    @y_position = value
   end
 end
