@@ -17,6 +17,8 @@ To run the Toy Robot Challenge app locally, complete the following steps;
 - Step 4: Open the `config.rb` file (inside the `toy-robot-challenge`). If necessary, change the `INPUT_FILE_NAME` to the name of the plain text file with your commands and change `BOARD_SIZE_X` and `BOARD_SIZE_Y` to desired x and y lengths of the board.
 - Step 5: To run the toy robot app enter `ruby run.rb` in the terminal. The app will automatically exit when all the supplied command have been run.
 
+**Note**: The PLACE commands x-position and y-position values and the board size values must be integers.
+
 ## Testing
 
 To test the app, complete the following steps;

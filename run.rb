@@ -4,7 +4,7 @@ require_relative 'source/parser.rb'
 
 include Parser
 
-command_data = File.read(INPUT_FILE_NAME).split("\n")
-robot = Robot.new()
+commands = File.read(INPUT_FILE_NAME)
+robot = Robot.new
 
-parse_and_run_commands(command_data, robot)
+parse_and_run_commands(commands, robot)

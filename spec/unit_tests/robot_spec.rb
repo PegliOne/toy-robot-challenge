@@ -3,7 +3,7 @@ require_relative '../../source/robot.rb'
 describe Robot do
   describe '#initialize' do
     it 'creates an unplaced robot' do
-      robot = Robot.new()
+      robot = Robot.new
       expect(robot.x_position).to eq(nil)
       expect(robot.y_position).to eq(nil)
       expect(robot.facing_direction).to eq(nil)
@@ -11,7 +11,7 @@ describe Robot do
   end
 
   context 'robot has been created' do
-    robot = Robot.new()
+    robot = Robot.new
 
     describe '#place' do
       it 'places the robot in the correct position' do
