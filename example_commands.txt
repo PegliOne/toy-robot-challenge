@@ -1,15 +1,11 @@
-move
-left
-right
-report
-place 0, 0, NORTH
-move
-report
-right
-move
-report
-left
-move
-report
-place 3, 3, WEST
-report
+PLACE 0, 0, NORTH
+MOVE
+REPORT
+RIGHT
+MOVE
+REPORT
+LEFT
+MOVE
+REPORT
+PLACE 3, 3, WEST
+REPORT
