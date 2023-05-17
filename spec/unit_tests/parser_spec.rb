@@ -16,6 +16,15 @@ describe Parser do
       end  
     end
 
+    context 'place command with decimal value' do
+      let(:command) { "PLACE 1.5, 1, NORTH" }
+
+      it 'outputs the decimal positions error' do
+        expect(STDOUT).to receive(:puts).with('Error: PLACE positions cannot be decimals')
+        parse_and_run_commands(command, robot)
+      end  
+    end
+
     context 'invalid command' do
       let(:command) { "PUT 1, 1, NORTH" }
 
@@ -40,5 +49,9 @@ describe Parser do
     it 'parses a poorly typed place command' do
       expect(parse_place_command(['place 1a', 'a1', 'north'])).to eq(expected)
     end
+
+    it 'sets position to nil if non-numerics are provided' do
+      expect(parse_place_command(['PLACE aa', '1', 'NORTH'])[:x_position]).to eq(nil)
+    end  
   end
 end  

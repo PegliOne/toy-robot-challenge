@@ -10,6 +10,7 @@ require_relative 'helpers/validations_helper.rb'
         # Check PLACE params are valid
         place_command_params = command.split(',')
         next puts "Error: Missing parameters for PLACE command" unless place_command_params.length >= 3
+        next puts "Error: PLACE positions cannot be decimals" if place_command_params[0,1].any? { |param| param.match?(/\d+\.\d+/) }
 
         # Parse and run PLACE command
         place_data = parse_place_command(place_command_params)
@@ -30,8 +31,8 @@ require_relative 'helpers/validations_helper.rb'
 
   def parse_place_command(params)
     { 
-      x_position: params[0].match(/\d+/).to_s.to_i, 
-      y_position: params[1].match(/\d+/).to_s.to_i, 
+      x_position: params[0].match?(/\d+/) ? params[0].match(/\d+/).to_s.to_i : nil, 
+      y_position: params[1].match?(/\d+/) ? params[1].match(/\d+/).to_s.to_i : nil, 
       facing_direction: params[2].strip.upcase
     }
   end
