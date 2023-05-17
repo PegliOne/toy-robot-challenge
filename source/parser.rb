@@ -2,19 +2,14 @@ require_relative 'robot.rb'
 require_relative 'helpers/validations_helper.rb'
 
  module Parser
-  include ValidationsHelper
-
   def parse_and_run_commands(commands, robot)
-    return puts "Error: Board dimensions invalid" unless is_board_valid?(BOARD_SIZE_X, BOARD_SIZE_Y)
     commands.split("\n").each do |command|
       formatted_command = command.match(/[a-zA-Z]*/).to_s.upcase
       case formatted_command
       when 'PLACE'
         # Check PLACE params are valid
         place_command_params = command.split(',')
-        next puts "Error: Missing position data" unless place_command_params.length >= 3
-        next puts 'Error: PLACE positions cannot be non-numeric values' if place_command_params[0,1].any? { |param| !param.match?(/\d+/) }
-        next puts 'Error: PLACE positions cannot be decimals' if place_command_params[0,1].any? { |param| param.match?(/\d+\.\d+/) }
+        next puts "Error: Missing parameters for PLACE command" unless place_command_params.length >= 3
 
         # Parse and run PLACE command
         place_data = parse_place_command(place_command_params)

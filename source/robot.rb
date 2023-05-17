@@ -11,7 +11,7 @@ class Robot
   end
 
   def place(x_position, y_position, facing_direction)
-    return unless is_place_data_valid?(x_position, y_position, facing_direction)
+    return puts "Error: Invalid PLACE parameters" unless is_place_data_valid?(x_position, y_position, facing_direction)
     @x_position = x_position
     @y_position = y_position
     @facing_direction = facing_direction
